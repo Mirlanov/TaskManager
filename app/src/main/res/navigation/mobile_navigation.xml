@@ -22,16 +22,20 @@
         android:name="com.example.tmanager.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
-    <fragment
-        android:id="@+id/taskFragment"
-        android:name="com.example.tmanager.TaskFragment"
-        android:label="Task"
-        tools:layout="@layout/fragment_task" />
+
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.tmanager.ProfileFragment"
+        android:name="com.example.tmanager.ui.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profileee"/>
+
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.example.tmanager.ui.task.TaskFragment"
+        android:label="Task"
+        tools:layout="@layout/fragment_taskk" />
+
+
 
 
 </navigation>
