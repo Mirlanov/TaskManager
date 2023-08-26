@@ -1,4 +1,4 @@
-package com.example.tmanager.ui.task
+package com.example.tmanager.utils
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

@@ -21,10 +21,19 @@ class Pref(context: Context) {
         return pref.getString(NAME_KEY, "")
     }
 
+    fun getAvatar():String? {
+        return pref.getString(AVATAR_KEY,"")
+    }
+
+    fun saveAvatar(url: String) {
+        pref.edit().putString(AVATAR_KEY,url).apply()
+    }
+
     companion object {
         const val PREF_NAME = "task.manager.pref"
         const val SHOWED_KEY = "showed.key"
         const val NAME_KEY = "name.key"
+        const val AVATAR_KEY = "avatar.key"
 
     }
 }
