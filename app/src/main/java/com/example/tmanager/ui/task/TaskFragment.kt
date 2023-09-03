@@ -1,22 +1,18 @@
 package com.example.tmanager.ui.task
 
-import com.example.tmanager.model.Task
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import com.example.tmanager.App
 import com.example.tmanager.databinding.FragmentTaskkBinding
+import com.example.tmanager.model.Task
 
 
 class TaskFragment : Fragment() {
     private lateinit var binding: FragmentTaskkBinding
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +24,7 @@ class TaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnSave.setOnClickListener {
-
+            save()
         }
     }
 
@@ -41,10 +37,8 @@ class TaskFragment : Fragment() {
         findNavController().navigateUp()
     }
 
-
     companion object {
         const val REQUEST_RESULT = "request.result"
         const val TASK_KEY = "task.key"
     }
-
 }

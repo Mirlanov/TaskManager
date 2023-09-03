@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                 bottomNav.isVisible = true
                 supportActionBar?.show()
             }
+
         }
     }
     //Worked
