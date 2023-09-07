@@ -5,17 +5,30 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.tmanager.R
 import com.example.tmanager.databinding.ItemOnboardingBinding
 import com.example.tmanager.model.OnBoarding
-import com.example.tmanager.utils.loadImage
+
 
 class OnBoardingAdapter(private val onClick: () -> Unit) :
     Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
 
-    private val list = arrayListOf(
-        OnBoarding(title = "Test1", description = "desc 1", image = ""),
-        OnBoarding(title = "Test2", description = "desc 2", image = ""),
-        OnBoarding(title = "Test3", description = "desc 3", image = ""),
+    private val list = arrayListOf<OnBoarding>(
+        OnBoarding(
+            "Много возможностей",
+            "Lorem ipsum dolor sit amet, cosectetur adipiscing",
+            R.raw.anim_lottie_1
+        ),
+        OnBoarding(
+            "Всегда рядом",
+            "Lorem ipsum dolor sit amet, cosectetur adipiscing",
+            R.raw.anim_lottie_2
+        ),
+        OnBoarding(
+            "Удобное поьзование",
+            "Lorem ipsum dolor sit amet, cosectetur adipiscing",
+            R.raw.anim_lottie_3
+        ),
     )
 
     override fun onCreateViewHolder(
@@ -43,7 +56,10 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
         fun bind(onBoarding: OnBoarding) {
             binding.tvTitle.text = onBoarding.title
             binding.tvDesc.text = onBoarding.description
-            onBoarding.image?.let { binding.imgBoard.loadImage(it) }
+            onBoarding.anim?.let {
+                binding.animBoard.setAnimation(onBoarding.anim)
+                binding.animBoard.playAnimation()
+            }
             binding.btnStart.isVisible = adapterPosition == list.lastIndex
             binding.skip.isVisible = adapterPosition != list.lastIndex
             binding.btnStart.setOnClickListener {
