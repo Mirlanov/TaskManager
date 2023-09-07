@@ -9,4 +9,5 @@ data class Task(
     val id: Int? = null,
     var title: String? = null,
     var description: String? = null,
+    val isSuccess: Boolean = false,
 ) : java.io.Serializable

@@ -18,7 +18,7 @@ import com.example.tmanager.ui.home.adapter.TaskAdapter
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val adapter = TaskAdapter(this::onLongClickItem, this::onClick)
+    private val adapter = TaskAdapter(this::onLongClickItem, this::onClick, this::onSuccess)
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +34,7 @@ class HomeFragment : Fragment() {
         binding.recyclerView.adapter = adapter
         val data = App.db.taskDao().getAll()
         adapter.addTask(data)
+        setData()
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
         }
@@ -68,10 +69,22 @@ class HomeFragment : Fragment() {
             .show()
     }
 
+    private fun onSuccess(task: Task) {
+        App.db.taskDao().update(task)
+        setData()
+
+    }
+
+
     companion object {
         const val TASK_FOR_EDIT = "task.edit"
 
 
+    }
+
+    private fun setData() {
+        val data = App.db.taskDao().getAll()
+        adapter.addTasks(data)
     }
 }
 
